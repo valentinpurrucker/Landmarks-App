@@ -9,12 +9,14 @@ import SwiftUI
 
 struct LandmarksList: View {
 	
+	@EnvironmentObject var modelData: ModelData
+	
 	@State private var showFavoritesOnly: Bool = false // state is always for this view and its children only, so make it private.
 	
 	
 	
 	var filteredLandmarks: [Landmark] {
-		landmarks.filter {
+		modelData.landmarks.filter {
 			landmark in
 			(!showFavoritesOnly || landmark.isFavorite)
 		}
